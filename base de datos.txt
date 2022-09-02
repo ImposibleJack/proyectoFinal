@@ -1,0 +1,37 @@
+CREATE DATABASE concesionaria;
+USE concesionaria;
+GO
+
+CREATE TABLE Carros(
+IdCarro INT Identity(1,1) Constraint PKAnimales Primary key,
+Marca VARCHAR(50) NOT NULL,
+Modelo VARCHAR(50) NOT NULL,
+Stock VARCHAR(3),
+Color VARCHAR(50),
+IdSector INT Constraint FKCarroSector  References Sector(IdSector),
+IdEncargado INT Constraint FKCarroEncargado Foreign key References Encargado(IdEncargado)
+)
+GO
+
+CREATE TABLE Sector(
+IdSector INT Identity(1,1) Constraint PKSector Primary key,
+Nombre VARCHAR(1)
+)
+GO
+
+CREATE TABLE Encargado(
+IdEncargado INT Identity(1,1) Constraint PKEncargado Primary key,
+Nombre VARCHAR(50) NOT NULL,
+Edad VARCHAR(3) NOT NULL,
+DNI VARCHAR(8) NOT NULL,
+IdSector INT Constraint FKEncargadoSector  References Sector(IdSector),)
+GO
+
+INSERT INTO Encargado (Nombre,Edad,DNI) VALUES ('Juan','35','75894625')
+GO
+
+INSERT INTO Sector (Nombre) VALUES ('A')
+GO
+
+INSERT INTO Carros(Marca,Modelo,Stock,Color) VALUES ('Toyota','4Runner','3','Gris')
+GO
